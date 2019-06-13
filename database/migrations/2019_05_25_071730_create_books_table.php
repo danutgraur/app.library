@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('cover_image')->nullable()->default('default.png');
+            $table->string('cover_image')->nullable();
             $table->unsignedBigInteger('author_id')->nullable();
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
             $table->timestamps();

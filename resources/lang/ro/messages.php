@@ -19,5 +19,7 @@ return [
     'cancel' => 'Anulează',
     'not_available' => 'Nu există cărți adăugate',
     'required' => 'Câmpul :attribute este obligatoriu.',
-    'selectAuthor' => '- selectare autor -'
+    'selectAuthor' => '- selectare autor -',
+    'login' => 'Autentificare',
+    'register' => 'Înregistrare',
     ];

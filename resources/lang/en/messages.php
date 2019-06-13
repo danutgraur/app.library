@@ -19,5 +19,8 @@ return [
     'cancel' => 'Cancel',
     'not_available' => 'No available books',
     'required' => 'The :attribute field is required.',
-    'selectAuthor' => '- choose author -'
+    'selectAuthor' => '- choose author -',
+    'login' => 'Login',
+    'register' => 'Register',
+
     ];

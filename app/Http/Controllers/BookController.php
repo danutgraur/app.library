@@ -45,12 +45,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-
         Validator::make($request->all(),[
            'title' => 'required|max:255',
            'author' => 'required|max:255',
            'tags' => 'required',
-           'description' => 'required'
+           'description' => 'required',
+            'cover' => 'mimes: jpeg,bmp,png'
         ])->validate();
 
         DB::transaction(function () use ($request) {
@@ -59,10 +59,15 @@ class BookController extends Controller
             $book->title = $request->title;
             $book->author_id = $request->author;
             $book->description = $request->description;
-            $cover = $request->file('cover');
-            $coverName = $book->title.'.'.$cover->getClientOriginalExtension();
-            $cover->storeAs('/covers/',$coverName);
-            $book->cover_image = $coverName;
+            if($request->file('cover')){
+                $cover = $request->file('cover');
+                $coverName = $book->title.'.'.$cover->getClientOriginalExtension();
+                $cover->storeAs('/covers/',$coverName);
+                $book->cover_image = $coverName;
+            } else {
+                $book->cover_image = 'default.png';
+            }
+
             $book->save();
 
             if($request->tags){
